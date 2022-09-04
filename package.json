@@ -1,0 +1,33 @@
+{
+  "name": "house-marketplace",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/joseph-muchene/house-marketPlace.git"
+  },
+  "keywords": [
+    "MERN"
+  ],
+  "author": "joseph muchene",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/joseph-muchene/house-marketPlace/issues"
+  },
+  "homepage": "https://github.com/joseph-muchene/house-marketPlace#readme",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "cookie-parser": "^1.4.6",
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.2",
+    "express": "^4.18.1",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^6.5.4",
+    "morgan": "^1.10.0"
+  }
+}
