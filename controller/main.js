@@ -37,3 +37,11 @@ export const properties = async (req, res) => {
 
   return res.status(200).json(result);
 };
+
+// find single property
+export const AgentById = async (req, res) => {
+  const propertyId = req.params.propertyId;
+  const result = await Property.findById({ _id: propertyId });
+
+  return res.status(200).json(result);
+};
