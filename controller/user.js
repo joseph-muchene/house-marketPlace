@@ -58,7 +58,6 @@ export const isAdmin = async (req, res, next) => {
   const userId = req.params.userId;
 
   //   check if signed user matches the one in params
-
   if (!SignedUser._id.toString() === userId) {
     return res.status(403).json("Not authorized");
   }
