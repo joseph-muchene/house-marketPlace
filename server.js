@@ -8,6 +8,8 @@ import morgan from "morgan";
 import cookieParser from "cookie-parser";
 import userRoute from "./routes/user.js";
 import AuthRoute from "./routes/auth.js";
+import agentRoute from "./routes/Agent.js";
+import propertyRoute from "./routes/property.js";
 import { ConnectDatabase } from "./config/ConnectDb.js";
 
 ConnectDatabase();
@@ -20,6 +22,8 @@ app.use(cookieParser());
 // routes
 app.use("/api/v1/user", userRoute);
 app.use("/api/v1/auth", AuthRoute);
+app.use("/api/v1/agent", agentRoute);
+app.use("/api/v1/property", propertyRoute);
 const PORT = process.env.PORT;
 
 app.listen(PORT, () => {

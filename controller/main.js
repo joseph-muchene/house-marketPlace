@@ -1,4 +1,4 @@
-import Property from "../models/Property";
+import Property from "../models/Property.js";
 
 // create a property
 export const createProperty = async (req, res) => {
@@ -39,7 +39,7 @@ export const properties = async (req, res) => {
 };
 
 // find single property
-export const AgentById = async (req, res) => {
+export const PropertyById = async (req, res) => {
   const propertyId = req.params.propertyId;
   const result = await Property.findById({ _id: propertyId });
 
