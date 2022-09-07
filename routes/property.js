@@ -8,7 +8,7 @@ import {
   PropertyById,
 } from "../controller/main.js";
 import { verifyToken } from "../verify.js";
-router.route("/").post(verifyToken, createProperty);
+router.route("/:agentId").post(verifyToken, createProperty);
 router.route("/:propertyId").delete(verifyToken, deleteProperty);
 router.route("/:propertyId").put(verifyToken, updateProperty);
 router.route("/").get(properties);

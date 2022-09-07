@@ -1,11 +1,25 @@
 import User from "../models/User.js";
-
+import bcrypt from "bcryptjs";
 // register a user
 export const Register = async (req, res) => {
-  const { password, ...others } = req.body;
-  const salt = await bcrypt.genSalt(10);
-  password = await bcrypt.hash(password, salt);
-  const newUser = new User(others);
+  // check if email already exists
+  if (await User.findOne({ email: req.body.email })) {
+    return res.status(400).json("user already exists");
+  }
+  const password = req.body.password;
+
+  let salt = await bcrypt.genSalt(10);
+  const hashed = await bcrypt.hash(password, salt);
+  const { _, ...others } = req.body;
+  const { name, email, profilePhoto, phoneNumber, role } = others;
+  const newUser = new User({
+    password: hashed,
+    name,
+    email,
+    profilePhoto,
+    phoneNumber,
+    role,
+  });
 
   const user = await newUser.save();
 
@@ -54,15 +68,8 @@ export const getUserById = async (req, res) => {
 };
 
 export const isAdmin = async (req, res, next) => {
-  const SignedUser = req.user;
-  const userId = req.params.userId;
-
-  //   check if signed user matches the one in params
-  if (!SignedUser._id.toString() === userId) {
-    return res.status(403).json("Not authorized");
-  }
   //   get the user by id
-  const user = await User.findById(userId);
+  const user = await User.findById(req.user.userId);
   //   check role
 
   if (user.role === "1") {

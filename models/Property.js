@@ -6,6 +6,11 @@ const PropertySchema = new mongoose.Schema(
       type: String,
       enum: ["rent", "sell"],
     },
+    location: {
+      type: String,
+      required: true,
+      maxLength: 100,
+    },
     title: {
       type: String,
       required: true,

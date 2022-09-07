@@ -1,6 +1,10 @@
 import mongoose from "mongoose";
 
 const AgentSchema = new mongoose.Schema({
+  agentId: {
+    type: String,
+    required: true,
+  },
   name: {
     type: String,
     required: true,

@@ -1,12 +1,17 @@
+import Agents from "../models/Agents.js";
 import Property from "../models/Property.js";
 
 // create a property
 export const createProperty = async (req, res) => {
-  const property = new Property(req.body);
+  // check if user is agent
+  if (await Agents.findOne({ agentId: req.params.agentId })) {
+    const property = new Property(req.body);
 
-  const savedProperty = await property.save();
+    const savedProperty = await property.save();
 
-  return res.status(200).json(savedProperty);
+    return res.status(200).json(savedProperty);
+  }
+  return res.status(403).json("property can only be created By agents");
 };
 // delete a property
 export const deleteProperty = async (req, res) => {
